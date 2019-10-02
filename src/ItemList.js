@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import Item from './Item';
+import Sort from './Sort';
 
 export default class ItemList extends Component {
   render() {
-    const { listContainer, title } = styles;
+    const { listContainer, title, categoryContainer } = styles;
     return (
-      <div>
-        <h3 style={title}>All Men</h3>
+      <>
+        <div style={categoryContainer}>
+          <h3 style={title}>All Men</h3>
+          <Sort onSetSortFilter={this.props.onSetSortFilter} />
+        </div>
+
         <div style={listContainer}>
           {this.props.list.map(item => {
             return (
@@ -23,7 +28,7 @@ export default class ItemList extends Component {
             );
           })}
         </div>
-      </div>
+      </>
     );
   }
 }
@@ -39,5 +44,10 @@ const styles = {
     marginLeft: '1em',
     marginTop: '2em',
     marginBottom: '1em'
+  },
+  categoryContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 };

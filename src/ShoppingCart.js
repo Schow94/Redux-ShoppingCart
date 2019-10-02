@@ -22,7 +22,16 @@ class ShoppingCart extends Component {
 
   render() {
     const { classes } = this.props;
-    const { container, button, shippingText, subtotal, cartItems } = classes;
+    const {
+      container,
+      button,
+      shippingText,
+      subtotal,
+      cartItems,
+      viewBag,
+      subtotalPrice,
+      divider
+    } = classes;
 
     return (
       <div className={container}>
@@ -31,9 +40,12 @@ class ShoppingCart extends Component {
             return <CartItem key={item.id} id={item.id} item={item} />;
           })}
         </div>
+        <hr className={divider} />
         <Container className={subtotal}>
-          <Typography>View Shopping Bag({this.props.cart.length})</Typography>
-          <Typography>
+          <Typography className={viewBag}>
+            View Shopping Bag({this.props.cart.length})
+          </Typography>
+          <Typography className={subtotalPrice}>
             Subtotal: {this.props.cart.length > 0 ? '$' : null}
             {this.props.cart.length > 0 ? this.calcSubTotal() : null}
           </Typography>
@@ -79,6 +91,20 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     padding: '1em'
+  },
+  viewBag: {
+    textDecoration: 'underline',
+    fontSize: '0.9em'
+  },
+  subtotalPrice: {
+    fontSize: '0.9em',
+    fontWeight: 600
+  },
+  divider: {
+    border: '0.5px solid #d9d7d7',
+    width: '96%',
+    color: '#FFFF00',
+    height: '0.1px'
   }
 });
 

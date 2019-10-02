@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
-import Typography from '@material-ui/core/Typography';
-
 export default class CartItem extends Component {
+  handleRemove = id => {
+    // this.props.remove();
+    console.log(id);
+  };
+
   render() {
-    const { item, itemInfo, image } = styles;
+    const { item, itemInfo, image, itemPrice, remove, price } = styles;
 
     return (
       <div style={item}>
@@ -15,7 +18,16 @@ export default class CartItem extends Component {
         />
         <div style={itemInfo}>
           <h4>{this.props.item.description}</h4>
-          <h4>Quantity: 1</h4>
+          <div style={itemPrice}>
+            <p>Quantity: 1</p>
+            <p style={price}>${this.props.item.price}</p>
+          </div>
+          <p
+            style={remove}
+            onClick={() => this.handleRemove(this.props.item.id)}
+          >
+            Remove
+          </p>
         </div>
       </div>
     );
@@ -26,6 +38,7 @@ const styles = {
   item: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     width: '90%',
     marginTop: '1em',
     marginBottom: '1em'
@@ -38,6 +51,17 @@ const styles = {
     width: '50%'
   },
   image: {
-    height: '100px'
+    height: '150px'
+  },
+  itemPrice: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  remove: {
+    textDecoration: 'underline'
+  },
+  price: {
+    fontWeight: 600
   }
 };

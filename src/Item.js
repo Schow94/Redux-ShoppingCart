@@ -1,31 +1,47 @@
 import React, { Component } from 'react';
 
-export default class Item extends Component {
+import withStyles from '@material-ui/core/styles/withStyles';
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+
+class Item extends Component {
   handleClick = id => {
     this.props.add(this.props.item);
   };
 
   render() {
-    const { sizes, image, container } = styles;
+    const { classes } = this.props;
+    const { sizes, image, container, rating, ratingContainer } = classes;
 
     return (
-      <div style={container} onClick={() => this.handleClick(this.props.id)}>
-        <img style={image} src={this.props.image} alt={this.props.desc} />
+      <div
+        className={container}
+        onClick={() => this.handleClick(this.props.id)}
+      >
+        <img className={image} src={this.props.image} alt={this.props.desc} />
         <h3>{this.props.desc}</h3>
         <h4>{`$${this.props.price}`}</h4>
-        <div style={sizes}>
+        <div className={sizes}>
           {this.props.sizes.map((size, idx) => {
             return <h5 key={idx}>{size + ','}</h5>;
           })}
         </div>
+        <Container className={ratingContainer}>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Rating size="small" className={rating} value={4} readOnly />
+          </Box>
+          <Typography style={{ marginTop: '0.2em' }}>(93)</Typography>
+        </Container>
       </div>
     );
   }
 }
 
-const styles = {
+const styles = theme => ({
   container: {
-    marginLeft: '4em',
+    marginLeft: '5em',
     width: '20%',
     marginBottom: '3em'
   },
@@ -35,5 +51,15 @@ const styles = {
   },
   image: {
     width: '300px'
+  },
+  rating: {
+    color: 'black'
+  },
+  ratingContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
   }
-};
+});
+
+export default withStyles(styles)(Item);
