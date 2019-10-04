@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 export default class CartItem extends Component {
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.quantity !== this.props.quantity;
+  // }
+
   handleRemove = id => {
     // this.props.remove();
     console.log(id);
@@ -19,12 +23,14 @@ export default class CartItem extends Component {
         <div style={itemInfo}>
           <h4>{this.props.item.description}</h4>
           <div style={itemPrice}>
-            <p>Quantity: 1</p>
-            <p style={price}>${this.props.item.price}</p>
+            <p>Quantity: {this.props.item.quantity}</p>
+            <p style={price}>
+              ${this.props.item.price * this.props.item.quantity}
+            </p>
           </div>
           <p
             style={remove}
-            onClick={() => this.handleRemove(this.props.item.id)}
+            onClick={() => this.handleRemove(this.props.item.description)}
           >
             Remove
           </p>

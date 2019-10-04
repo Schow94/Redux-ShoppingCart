@@ -22,6 +22,18 @@ const navLinks = [
 ];
 
 class Navbar extends Component {
+  //Currently not summing entire array, only 2 array items right now
+  cartItemNum = () => {
+    let cartNum = [];
+    const cartTotal = this.props.cart.map(item => {
+      cartNum.push(item.quantity);
+      //reduce not working properly
+      return cartNum.reduce((x, y) => x + y);
+    });
+    console.log(cartTotal);
+    // return cartTotal;
+  };
+
   render() {
     const { classes, toggleCart } = this.props;
     const {
@@ -36,7 +48,7 @@ class Navbar extends Component {
       fullList,
       links
     } = classes;
-
+    // this.cartItemNum();
     return (
       <div className={root}>
         <AppBar className={freeShipping} position="static">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addToCart } from './actions/cartActions';
+import { addToCart, updateCart } from './actions/cartActions';
 import ItemList from './ItemList';
 import Navbar from './Navbar';
 import ShoppingCart from './ShoppingCart';
@@ -41,6 +41,8 @@ class ShoppingCartApp extends Component {
           style={list}
           list={this.props.list}
           add={this.props.onAddToCart}
+          cart={this.props.cart}
+          onUpdateCart={this.props.onUpdateCart}
         />
       </div>
     );
@@ -50,15 +52,12 @@ class ShoppingCartApp extends Component {
 const getSortedList = (list, filter) => {
   switch (filter) {
     case FEATURED:
-      console.log(FEATURED);
-      return list;
+      return list.sort((a, b) => (a.id > b.id ? 1 : -1));
 
     case HIGH_TO_LOW:
-      console.log(HIGH_TO_LOW);
       return list.sort((a, b) => (a.price < b.price ? 1 : -1));
 
     case LOW_TO_HIGH:
-      console.log(LOW_TO_HIGH);
       return list.sort((a, b) => (a.price > b.price ? 1 : -1));
 
     default:
@@ -76,7 +75,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddToCart: task => dispatch(addToCart(task)),
+    onAddToCart: newItem => dispatch(addToCart(newItem)),
+    onUpdateCart: sameItem => dispatch(updateCart(sameItem)),
     onSetSortFilter: filter => dispatch(setSortFilter(filter))
   };
 };

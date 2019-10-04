@@ -24,6 +24,8 @@ export default class ItemList extends Component {
                 price={item.price}
                 sizes={item.sizes}
                 add={this.props.add}
+                cart={this.props.cart}
+                onUpdateCart={this.props.onUpdateCart}
               />
             );
           })}

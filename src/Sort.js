@@ -10,7 +10,6 @@ export default class Sort extends Component {
   }
 
   handleChange = e => {
-    // console.log(this.state.sortValue);
     this.setState(
       {
         sortValue: e.target.value

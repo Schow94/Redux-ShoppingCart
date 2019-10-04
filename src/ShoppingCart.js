@@ -12,7 +12,7 @@ import CartItem from './CartItem';
 class ShoppingCart extends Component {
   calcSubTotal = () => {
     const priceArray = this.props.cart.map(item => {
-      return item.price;
+      return item.price * item.quantity;
     });
     const reducer = (acc, curr) => acc + curr;
 
@@ -37,7 +37,7 @@ class ShoppingCart extends Component {
       <div className={container}>
         <div className={cartItems}>
           {this.props.cart.map(item => {
-            return <CartItem key={item.id} id={item.id} item={item} />;
+            return <CartItem key={item.cartId} id={item.id} item={item} />;
           })}
         </div>
         <hr className={divider} />

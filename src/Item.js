@@ -7,9 +7,32 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 
 class Item extends Component {
-  handleClick = id => {
-    this.props.add(this.props.item);
+  // Check if item in cart already & process accordingly
+  checkQuantity = (cart, newItem) => {
+    //Item not in cart yet
+    if (!newItem.inCart) {
+      newItem.inCart = true;
+      this.props.add(newItem);
+    } else {
+      // Item already in cart
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === newItem.id) {
+          cart[i].quantity += 1;
+          console.log('updated cart', cart[i]);
+          //add existing items here
+          this.props.onUpdateCart(cart[i]);
+        }
+      }
+    }
   };
+
+  onAddToCart = (cart, newItem) => {
+    this.checkQuantity(cart, newItem);
+    // this.props.add(newItem);
+  };
+
+  //Call this inline
+  // {this.checkQuantity(this.props.cart, this.props.item)}
 
   render() {
     const { classes } = this.props;
@@ -18,7 +41,7 @@ class Item extends Component {
     return (
       <div
         className={container}
-        onClick={() => this.handleClick(this.props.id)}
+        onClick={() => this.onAddToCart(this.props.cart, this.props.item)}
       >
         <img className={image} src={this.props.image} alt={this.props.desc} />
         <h3>{this.props.desc}</h3>
