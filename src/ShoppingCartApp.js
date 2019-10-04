@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addToCart, updateCart } from './actions/cartActions';
-import ItemList from './ItemList';
+import { addToCart, updateCart, removeItem } from './actions/cartActions';
+import PageContent from './PageContent';
+// import ItemList from './ItemList';
 import Navbar from './Navbar';
 import ShoppingCart from './ShoppingCart';
 
@@ -25,7 +26,7 @@ class ShoppingCartApp extends Component {
   };
 
   render() {
-    const { container, cart, list } = styles;
+    const { container, cart, pageContent } = styles;
     return (
       <div style={container}>
         <Navbar toggleCart={this.toggleCartOpen} cart={this.props.cart} />
@@ -34,16 +35,27 @@ class ShoppingCartApp extends Component {
             style={cart}
             isCartOpen={this.state.isCartOpen}
             cart={this.props.cart}
+            remove={this.props.onRemoveItem}
           />
         ) : null}
-        <ItemList
+
+        <PageContent
+          style={pageContent}
           onSetSortFilter={this.props.onSetSortFilter}
-          style={list}
           list={this.props.list}
           add={this.props.onAddToCart}
           cart={this.props.cart}
           onUpdateCart={this.props.onUpdateCart}
         />
+        {/* 
+        <ItemList
+          style={pageContent}
+          onSetSortFilter={this.props.onSetSortFilter}
+          list={this.props.list}
+          add={this.props.onAddToCart}
+          cart={this.props.cart}
+          onUpdateCart={this.props.onUpdateCart}
+        /> */}
       </div>
     );
   }
@@ -77,14 +89,10 @@ const mapDispatchToProps = dispatch => {
   return {
     onAddToCart: newItem => dispatch(addToCart(newItem)),
     onUpdateCart: sameItem => dispatch(updateCart(sameItem)),
+    onRemoveItem: itemId => dispatch(removeItem(itemId)),
     onSetSortFilter: filter => dispatch(setSortFilter(filter))
   };
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ShoppingCartApp);
 
 const styles = {
   container: {
@@ -98,7 +106,10 @@ const styles = {
     right: 0,
     position: 'fixed'
   },
-  list: {
-    zIndex: 1
-  }
+  pageContent: {}
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShoppingCartApp);

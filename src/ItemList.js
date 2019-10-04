@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Item from './Item';
+import Container from '@material-ui/core/Container';
 import Sort from './Sort';
 
 export default class ItemList extends Component {
   render() {
-    const { listContainer, title, categoryContainer } = styles;
+    const { listContainer, title, categoryContainer, container } = styles;
     return (
-      <>
+      <Container className={container}>
         <div style={categoryContainer}>
           <h3 style={title}>All Men</h3>
           <Sort onSetSortFilter={this.props.onSetSortFilter} />
@@ -30,7 +31,7 @@ export default class ItemList extends Component {
             );
           })}
         </div>
-      </>
+      </Container>
     );
   }
 }
@@ -40,7 +41,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'space-between'
   },
   title: {
     marginLeft: '1em',
@@ -51,5 +52,10 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column'
+    // width: '70%'
   }
 };

@@ -37,7 +37,14 @@ class ShoppingCart extends Component {
       <div className={container}>
         <div className={cartItems}>
           {this.props.cart.map(item => {
-            return <CartItem key={item.cartId} id={item.id} item={item} />;
+            return (
+              <CartItem
+                remove={this.props.remove}
+                key={item.cartId}
+                id={item.id}
+                item={item}
+              />
+            );
           })}
         </div>
         <hr className={divider} />

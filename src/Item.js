@@ -73,7 +73,7 @@ const styles = theme => ({
     flexDirection: 'row'
   },
   image: {
-    width: '300px'
+    width: '250px'
   },
   rating: {
     color: 'black'
