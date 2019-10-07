@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.js": "/Redux-ShoppingCart/static/js/main.bbe8059a.chunk.js",
+    "main.js.map": "/Redux-ShoppingCart/static/js/main.bbe8059a.chunk.js.map",
+    "runtime-main.js": "/Redux-ShoppingCart/static/js/runtime-main.374787ab.js",
+    "runtime-main.js.map": "/Redux-ShoppingCart/static/js/runtime-main.374787ab.js.map",
+    "static/js/2.1f7c0401.chunk.js": "/Redux-ShoppingCart/static/js/2.1f7c0401.chunk.js",
+    "static/js/2.1f7c0401.chunk.js.map": "/Redux-ShoppingCart/static/js/2.1f7c0401.chunk.js.map",
+    "index.html": "/Redux-ShoppingCart/index.html",
+    "precache-manifest.a77711e7e6448a597ebe4a9c39dad3ca.js": "/Redux-ShoppingCart/precache-manifest.a77711e7e6448a597ebe4a9c39dad3ca.js",
+    "service-worker.js": "/Redux-ShoppingCart/service-worker.js",
+    "static/media/image1.jpeg": "/Redux-ShoppingCart/static/media/image1.ee5f202e.jpeg",
+    "static/media/image10.jpeg": "/Redux-ShoppingCart/static/media/image10.1206f777.jpeg",
+    "static/media/image11.jpeg": "/Redux-ShoppingCart/static/media/image11.b0ed3f00.jpeg",
+    "static/media/image12.jpeg": "/Redux-ShoppingCart/static/media/image12.bd9aa390.jpeg",
+    "static/media/image13.jpeg": "/Redux-ShoppingCart/static/media/image13.70c37711.jpeg",
+    "static/media/image2.jpeg": "/Redux-ShoppingCart/static/media/image2.ac51ba3a.jpeg",
+    "static/media/image3.jpeg": "/Redux-ShoppingCart/static/media/image3.03022045.jpeg",
+    "static/media/image4.jpeg": "/Redux-ShoppingCart/static/media/image4.82f4b46f.jpeg",
+    "static/media/image5.jpeg": "/Redux-ShoppingCart/static/media/image5.0d937565.jpeg",
+    "static/media/image6.jpeg": "/Redux-ShoppingCart/static/media/image6.f8ccf767.jpeg",
+    "static/media/image7.jpeg": "/Redux-ShoppingCart/static/media/image7.f67e8252.jpeg",
+    "static/media/image8.jpeg": "/Redux-ShoppingCart/static/media/image8.916865cd.jpeg",
+    "static/media/image9.jpeg": "/Redux-ShoppingCart/static/media/image9.d95853de.jpeg"
+  }
+}
