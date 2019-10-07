@@ -7,7 +7,7 @@ export default class ItemList extends Component {
   render() {
     const { listContainer, title, categoryContainer, container } = styles;
     return (
-      <Container className={container}>
+      <Container style={container}>
         <div style={categoryContainer}>
           <h3 style={title}>All Men</h3>
           <Sort onSetSortFilter={this.props.onSetSortFilter} />

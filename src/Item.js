@@ -12,16 +12,18 @@ class Item extends Component {
     //Item not in cart yet
     if (!newItem.inCart) {
       newItem.inCart = true;
+
       this.props.add(newItem);
-    } else {
-      // Item already in cart
-      for (let i = 0; i < cart.length; i++) {
-        if (cart[i].id === newItem.id) {
-          cart[i].quantity += 1;
-          console.log('updated cart', cart[i]);
-          //add existing items here
-          this.props.onUpdateCart(cart[i]);
-        }
+      console.log('cart', cart);
+    }
+    // Item already in cart
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === newItem.id) {
+        cart[i].quantity += 1;
+        cart[i].price *= cart[i].quantity;
+        // console.log('updated cart', cart[i]);
+        //add existing items here
+        this.props.onUpdateCart(cart[i]);
       }
     }
   };

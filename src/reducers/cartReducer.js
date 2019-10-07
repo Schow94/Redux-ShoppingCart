@@ -8,12 +8,14 @@ const cartReducer = (state = initialState, action) => {
     case ADD_ITEM:
       const cartItem = {
         ...action.payload,
-        cartId: uuid()
+        cartId: uuid(),
+        inCart: true
       };
+      // console.log('ADD_ITEM STATE', state);
       return [...state, cartItem];
 
     case UPDATE_ITEM:
-      console.log('payload', action.payload);
+      // console.log('payload', action.payload);
 
       return [
         ...state.map(item =>
@@ -22,6 +24,15 @@ const cartReducer = (state = initialState, action) => {
       ];
 
     case REMOVE_ITEM:
+      //first need to check id, so filter with id, then map through the
+      // item to remove and change the inCart to false after removing
+      const itemToRemove = state.filter(item => {
+        // const updatedItem = (item.inCart = false);
+        return { ...item, inCart: false };
+      });
+
+      console.log(state);
+
       return [...state.filter(item => item.id !== action.payload)];
 
     default:

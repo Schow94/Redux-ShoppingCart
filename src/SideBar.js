@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import List from '@material-ui/core/List';
+import Container from '@material-ui/core/Container';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
@@ -20,7 +21,7 @@ class SideBar extends Component {
         <List component="nav" aria-label="main mailbox folders">
           {sideBarItems.map((item, idx) => {
             return (
-              <>
+              <Container key={idx}>
                 <ListItem className={row}>
                   <ListItemText>
                     <Typography className={text}>{item}</Typography>
@@ -28,7 +29,7 @@ class SideBar extends Component {
                   <Typography variant="h6">+</Typography>
                 </ListItem>
                 <Divider />
-              </>
+              </Container>
             );
           })}
         </List>

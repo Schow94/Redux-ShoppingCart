@@ -137,6 +137,7 @@ const initialState = [
 const listReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
+      console.log('list state', state);
       return state;
   }
 };
